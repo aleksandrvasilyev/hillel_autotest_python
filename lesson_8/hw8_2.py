@@ -1,6 +1,6 @@
 def my_decorator(func):
     def wrapper(*args, **kwargs):
-        """Convert to string the result of the function of multiplying two numbers """
+        """Convert to string the result of the function """
         res = str(func(*args, **kwargs))
 
         return res
