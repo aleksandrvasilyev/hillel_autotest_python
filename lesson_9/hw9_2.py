@@ -1,16 +1,9 @@
-def outer(text):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            """Функция проверяет соответствие результату работы методу capitalize()"""
-            myfunc = func(*args, **kwargs)
-            print(myfunc, text)
-            return func
-        return wrapper
-    return decorator
+from hw9_1 import outer
 
 
 @outer('hello')
 def ifcapital(text):
+    """Функция проверяет соответствие результату работы методу capitalize()"""
     if type(text) == str:
         return True if text.capitalize() == text else False
     else:
