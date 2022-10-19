@@ -1,7 +1,6 @@
 def outer(text):
     def decorator(func):
         def wrapper(*args, **kwargs):
-            """Декоратор печатает результат функции и переданный параметр"""
             myfunc = func(*args, **kwargs)
             print(myfunc, text)
             return func
