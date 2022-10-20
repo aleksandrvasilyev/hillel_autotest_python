@@ -10,10 +10,10 @@ def ifcapital(text):
         return False
 
 
+print()
 assert ifcapital('Привет')
-assert ifcapital('привет')
+assert ifcapital('привет') is False
 assert ifcapital('')
-assert ifcapital('lorem ipsum')
+assert ifcapital('lorem ipsum') is False
 assert ifcapital('123')
-assert ifcapital(123)
-print(ifcapital.__doc__)
+assert ifcapital(123) is False

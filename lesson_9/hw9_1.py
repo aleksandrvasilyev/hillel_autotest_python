@@ -3,8 +3,10 @@ def outer(text):
         def wrapper(*args, **kwargs):
             myfunc = func(*args, **kwargs)
             print(myfunc, text)
-            return func
+            return myfunc
+
         return wrapper
+
     return decorator
 
 
@@ -19,10 +21,7 @@ def paired(num):
 
 assert paired(0)
 assert paired(4)
-assert paired(5)
+assert paired(5) is False
 assert paired(8.0)
-assert paired(1.5)
-assert paired('120')
-print(paired.__doc__)
-
-
+assert paired(1) is False
+assert paired('120') is False
