@@ -61,7 +61,7 @@ class Bank:
 
 alex = Bank('Alex', 10000, 10)
 mark = Bank('Mark', 8000, 15)
-alex.percent = 0
+alex.percent = 12
 alex.add_money(2000)
 alex.subtract_money(1000)
 alex.transfer(mark, 1000)
