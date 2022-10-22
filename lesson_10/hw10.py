@@ -31,7 +31,7 @@ class Bank:
         if 0 < digit < 100:
             self.__percent = digit
         else:
-            print('неверное значение процента')
+            raise 'неверное значение процента'
 
     def add_money(self, amount):
         self.deposit += amount
@@ -61,7 +61,7 @@ class Bank:
 
 alex = Bank('Alex', 10000, 10)
 mark = Bank('Mark', 8000, 15)
-alex.percent = 12
+alex.percent = 0
 alex.add_money(2000)
 alex.subtract_money(1000)
 alex.transfer(mark, 1000)
