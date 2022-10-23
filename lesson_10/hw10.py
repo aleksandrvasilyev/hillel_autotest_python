@@ -1,6 +1,6 @@
 import uuid
 import datetime
-from art import *
+from art import text2art
 
 
 class Bank:
@@ -18,9 +18,9 @@ class Bank:
         return f'{self.name}, {self.__percent}, {self.deposit}'
 
     def __del__(self):
-        Bank.deposit_bag -= self.deposit
-        print(
-            f'У {self.name} закрито рахунок у звязку з ліквідацією банка, повернуто {self.deposit}, власник претензій не має')
+        print(f'У {self.name} закрито рахунок у звязку з ліквідацією банка, повернуто {self.deposit}, '
+              f'власник претензій не має')
+        self.subtract_money(self.deposit)
 
     @property
     def percent(self):
@@ -31,7 +31,7 @@ class Bank:
         if 0 < digit < 100:
             self.__percent = digit
         else:
-            raise 'неверное значение процента'
+            raise ValueError('неверное значение процента')
 
     def add_money(self, amount):
         self.deposit += amount
@@ -42,8 +42,12 @@ class Bank:
         Bank.deposit_bag -= amount
 
     def transfer(self, other, amount):
-        other.deposit += amount
-        self.deposit -= amount
+        if other.deposit >= amount:
+            self.deposit += amount
+            other.deposit -= amount
+        else:
+            self.deposit += other.deposit
+            other.deposit = 0
 
     @property
     def get_todays_profit(self):
@@ -64,4 +68,5 @@ mark = Bank('Mark', 8000, 15)
 alex.percent = 12
 alex.add_money(2000)
 alex.subtract_money(1000)
-alex.transfer(mark, 1000)
+mark.transfer(alex, 100000)
+
