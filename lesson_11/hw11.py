@@ -44,9 +44,10 @@ class School:
 
     @property
     def month_salary(self):
-        teachers_salary = sum([i.salary for i in school1.teachers])
-        techstaffs_salary = sum([i.salary for i in school1.technicall_staffs])
-        return teachers_salary + techstaffs_salary
+        teachers_salary = sum([i.salary for i in self.teachers])
+        techstaffs_salary = sum([i.salary for i in self.technicall_staffs])
+        director_salary = self.director.salary
+        return teachers_salary + techstaffs_salary + director_salary
 
 
 fake = Faker('uk')
@@ -61,5 +62,5 @@ for teacher in school1.teachers:
 
 print(school1.month_salary)
 new_teacher = Teacher(fake.first_name(), fake.last_name(), randint(10000, 50000))
-school1.teachers += [new_teacher]
+school1.teachers.append(new_teacher)
 school1.new_director(new_teacher)
